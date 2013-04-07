@@ -109,7 +109,7 @@ function cRendererPlugin ()  {
 			this.drawCage.appendChild(objCvFont);
 
             //// Erzeugung des Elements fuer die spaetere Anzeige und Einbindung in die Stage
-            if ($.browser.msie) {
+            if (typeof $.browser != "undefined" && $.browser.msie) {
                 G_vmlCanvasManager.initElement(objCvBg);
                 G_vmlCanvasManager.initElement(objCv);
                 G_vmlCanvasManager.initElement(objCvFont);
