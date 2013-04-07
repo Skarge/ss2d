@@ -1,0 +1,46 @@
+----------------------------------
+BEREICHE
+----------------------------------
+*** Letztes Update: 10.01.2011 ***
+
+Allgemein:
+- Ausarbeitung des Mapformats
+- Speicherart der Maps erarbeiten
+- Methoden zum Laden der Maps
+- Wegfindung (später)
+
+
+Grafik:
+- Erweiterte Sprite-Funktionen (drehen, skalieren, Transparenz usw.)
+- Integration einer editierbaren Z-Koordinate
+- Anzeige von Bildern / Sprites ohne (!) GameObjects (für Overlays oder Hintergrund-Bilder nützlich)
+- Farbeffekte integrieren (Einfärben des Bildes, Schwarz-Weiß, Änderung der Helligkeit...)
+- Partikelsystem (später)
+- Licht und Schatten (0.6 oder später)
+- Normal Maps (0.8 oder später)
+- isometrischer Renderer (0.6 oder später)
+
+
+Sound:
+- Wrapper schreiben ;)
+
+
+Font + Text:
+- Laden der .xml-Dateien
+
+
+Input:
+- Maus-Routinen
+- bessere Unterstützung von Touch-Oberflächen (i-Produkte, Smartphones...)
+- evtl. Integration eines Gamepad-Supports
+
+
+Tools:
+- Mapeditor
+- Debug-Set ???
+- "Projektstudio" ???
+
+
+Sonstiges:
+- Regulierbarkeit einstellen? (div. Sets für schwächere und stärkere PCs)
+- Netzwerkfähigkeit (0.7 oder später)

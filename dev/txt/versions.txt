@@ -1,0 +1,58 @@
+--------------
+Version 0.9
+--------------
+
+- Physik (Box2djs) ????
+
+
+--------------
+Version 0.8
+--------------
+
+- Partikelsystem???
+- System-Konfigurationen (langsam, mittel, schnell) über die div. Sachen an- / ausgeschaltet werden können ???
+
+
+--------------
+Version 0.7.5
+--------------
+
+- Performance
+
+
+--------------
+Version 0.7 (???)
+--------------
+
+- Mapimport aus Tiled
+- Stärkere Einbindung Tile-Engine
+- eigener Mapeditor ???
+- Netzwerk???
+- Videointegration ???
+
+
+--------------
+Version 0.6 (Frühjahr 2011)
+--------------
+
+- Integration Font-/Message-System
+- Integration Startmenü
+- Integration Preloader (Ressourcen)
+- Integration Fallback-Renderer
+- Neues Input-Plugin
+  -> Maus-Abfragen in Input-Plugin; Blockieren von Rechtsklick auf Spielbereich
+- "Shading"? Bump-Maps / Normal-Maps? (Grafik)
+- Postfilter? (Grafik)
+
+
+--------------
+Version 0.5
+--------------
+
+- current stable
+
+--------------
+Version 0.5beta
+--------------
+
+- older release

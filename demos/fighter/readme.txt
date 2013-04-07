@@ -1,0 +1,4 @@
+-- Mini Kampfspieldemo "Fighter" --
+
+Um den Fortschritt seit dem letzten Release aufzuzeigen wurde "Fighter" entwickelt, die erste Demo, die sich "Minigame" schimpfen darf. In Fighter geht es darum, durch Ausweichen und Schlagen den Gegner kampfunfähig zu setzen. 
+Die Demo bedient sich verschiedener Elemente der Engine. So finden sich neben mehreren GameObjects auch vielerlei Animationen, Hintergrundmusik oder Steuerung mittels Tastatureingaben. Trotz des geringen Umfangs sowie lediglich eingeschränkter Gegner-KI zeigt "Fighter" dennoch ganz anschaulich, in welche Richtung sich das Projekt bewegt.

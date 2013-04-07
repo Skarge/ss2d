@@ -1,0 +1,67 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+
+<head>
+ <title>.:: ss2d 1.0 (550) ::.</title>
+
+ <script type="text/javascript" src="inc/gserializer.js">
+ </script>
+ <script type="text/javascript" src="inc/jquery.min.js">
+ </script>
+
+</head>
+
+<body>
+<textarea id="output" style="width:800px; height:450px;"></textarea>
+
+<br />
+<div id="stats"><input type="text" id="input" style="width:700px;" />&nbsp;<input type="button" value="Send It" onclick="SendIt();" /></div><br />
+<br /><br />
+<div id="stage"></div>
+
+<script type="text/javascript" src="ss2d/ss2dMain.js">
+</script>
+
+<script type="text/javascript">
+ss2d.LoadPlugin("ss2d/ss2dRendererCanvas.js", "cRendererPlugin");
+ss2d.LoadPlugin("ss2d/ss2dWebSocket.js", "cWebSocketPlugin");
+
+ss2d.Init(false);
+ss2d.Run("Start");
+
+function Start() {
+	ss2d.Socket.SetHost("ws://178.202.82.17:8000/echo");
+	ss2d.Socket.Connect();
+	setTimeout("ReadIt()", 500);
+}
+
+function SendIt() {
+	if ($("#input").val() != "") {
+		var tmp = new sockPackage($("#input").val());
+		ss2d.Socket.SendPackage(tmp);
+		$("#input").val("");
+	}
+}
+
+
+$('#input').keypress(function(event) {
+	if (event.keyCode == '13') {
+		SendIt();
+	}
+});
+
+function ReadIt() {
+	var tmp = ss2d.Socket.ReadPackage();
+	if (typeof tmp != "undefined") {
+		$("#output").html($("#output").html() + tmp + "\n");
+	}
+	setTimeout("ReadIt()", 500);
+}
+
+</script>
+</body>
+
+</html>

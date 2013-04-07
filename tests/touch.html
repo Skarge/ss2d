@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<script type="text/javascript">
+document.addEventListener("mouseup", MouseUp, false);
+document.addEventListener("mousedown", MouseDown, false);
+document.addEventListener("mousemove", MouseMove, false);
+
+function MouseUp(event) {
+	output("Up");
+}
+
+function MouseDown(event) {
+	output("Down");
+}
+
+function MouseMove(event) {
+	outputA(event.pageX + " | " + event.pageY);
+}
+
+function output (text) {
+	document.getElementById("ausgabe").innerHTML = text;
+}
+
+function outputA (text) {
+	document.getElementById("ausgabeA").innerHTML = text;
+}
+
+alert ("Let's go!");
+</script>
+
+<body>
+<div id="ausgabe"></div><br />
+<div id="ausgabeA"></div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<Strings>
+ <Menu>
+  <Element1>New Game</Element1>
+  <Element2>Resume Game</Element2>
+ </Menu>
+ <Levelintro>
+  <Level1></Level1>
+ </Levelintro>
+ <Dialog>
+  <City1>
+   <NPC1>Welcome to our town!</NPC1>
+  </City1>
+ </Dialog>
+</Strings>

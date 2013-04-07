@@ -1,0 +1,45 @@
+function LoadMap() {
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        }
+        else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.open("GET", "desert.tmx", false);
+        xmlhttp.send();
+        xmlDoc = xmlhttp.responseXML;
+
+        var output = xmlDoc.documentElement.tagName + "<br />";
+
+        for (var i = 0; i < xmlDoc.documentElement.childNodes.length; i++) {
+            if (typeof xmlDoc.documentElement.childNodes[i].tagName != "undefined") {
+
+                for (var j = 0; j < xmlDoc.documentElement.childNodes[i].childNodes.length; j++) {
+                    if (typeof xmlDoc.documentElement.childNodes[i].childNodes[j].tagName != "undefined") {
+                        if (xmlDoc.documentElement.childNodes[i].childNodes[j].tagName == "data") {
+
+                            var count = 1;
+
+                            for (y = 0; y < ss2d.ss2dMap.mapData.header.height; y++) {
+                                ss2d.ss2dMap.mapData.data[y] = [];
+
+                                for (x = 0; x < ss2d.ss2dMap.mapData.header.width; x++) {
+                                    ss2d.ss2dMap.mapData.data[y][x] = [ss2d.ss2dMap.mapData.header.layers];
+                                    ss2d.ss2dMap.mapData.data[y][x][0] = {
+                                         resId: xmlDoc.documentElement.childNodes[i].childNodes[j].childNodes[count].getAttribute("gid")
+                                    }
+                                    count += 2;
+                                }
+                                count += 80 - (ss2d.ss2dMap.mapData.header.width * 2);
+                            }
+                            alert (count + " | " + x + " | " + y);
+                        }
+                    }
+                }
+            }
+        }
+}

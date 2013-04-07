@@ -1,0 +1,19 @@
+Eigenschaften: 
+        id
+        position.x
+	position.y
+        direction.x
+	direction.y
+        width
+        height
+        speed
+        rate
+        spriteId
+
+Methoden:
+        GetPosition()
+        SetPosition(x, y)
+	Move (x, y, useSpeed)
+	Stop ()
+	LoadSprite (src)
+	RemoveSprite ()

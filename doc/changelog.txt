@@ -1,0 +1,272 @@
+=============================================================================================================================================================
+screenSports2D Changelog
+=============================================================================================================================================================
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Legende:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ neu
+- verworfen
+* geändert / gefixt
+# kommentar
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 201
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Update des Mapformats (docs/maps.txt)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 200
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ GameObject::IsCollisionBox(): Funktion hinzugefügt zum Prüfen auf angelegte Kollisionsbox
+
+* GameObject::RemoveCollisionBox(): Fehler behoben
+* Main::DetectCollision(): Fehler bei Prüfung multipler Boxen bei beiden Objekten behoben
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 199
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Main: Aufräumarbeiten, Anpassungen
+* Update der ToDo-Liste
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 198
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Hinzugefügte Kollisions-Boxen werden nur im Modus "multiplebb" verwendet! "bounding" nutzt weiterhin eine "Master"-Box
+
++ GameObject::AddCollisionBox(): Objekt um eine weitere Box zur Kollisionserkennung erweitern
++ GameObject::RemoveCollisionBox(): Entfernen einer angelegten Box
+
+* Main::DetectCollision(): Erkennungstyp ab sofort einstellbar; Neuer Modus ist "multiplebb", der pro GameObject mehrere Bounding-Boxes zulässt und prüft
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 197
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Seit dieser Version existiert eine Kopie von Excanvas im Ordner inc/, wodurch auch der IE mit Canvas ausgestattet wird. Künftig in Releases packen!
+
++ Font::SetPosition(): Position allgemein einstellbar, keine separate Angabe im Schreib-Befehl mehr nötig
++ Font: Einbau der Variable updateDraw, über die Grafikplugins mitgeteilt werden kann, dass eine Textänderung nötig ist
+
+
+* Graphics::DrawScene(): Anpassung der Font-Anzeige, Umlegung auf ctx-Layer 100 (Nummer aus Puffergründen so hoch ;) )
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 196
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Graphics: Teilweise Neucoding aufgrund der Umstellung auf Multi-Layer-Drawing (teils extremer Performance-Boost!)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 195
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Bugfixes
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 194
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Update der ToDo-Liste
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 193
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Font: Ausbau des Plugins um weitere Methoden
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 192
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Graphics: Einbau Fallback-Renderer auf DIV-Basis (abgespeckt, nur Spriteanzeige und -animation möglich)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 191
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Font: Aufbau der Dateien zur Textspeicherung definiert (siehe doc/plugin_font_text_storage.txt)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 190
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Input::Init(): Methode hinzugefügt. Legt einen Callback an, der regelmäßig auf Eingaben prüft (bessere Performance als über UpdateGame())
+
+* Main::LoadPlugin(): Automatische Initialisierung der Plugins (bei vorhandener Init()-Methode im Plugin)
+* Main::UpdateGame(): ss2d.Input.UpdateInput() wird nicht mehr im Refresh aufgerufen, sondern wurde als Callback registriert
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 189
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Font: Einbau von Positionierung
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 188
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Umbenennung der Plugins von ss2dPLUGIN_NAME in PLUGIN_NAME (z.B. ss2d.ss2dGraphics zu ss2d.Graphics)
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 187
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Commands_0-6.doc angepasst
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 185
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Main: Konsolenlog in eHandler integriert
+* Main: Behebung eines Fehlers in eHandler.logText, der bei deaktivierter Konsole Fehlermeldungen (alerts) verursacht hat
+* Main: Ausweitung des Konsolenlogs auf weitere Funktionen
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 184
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Konsolenlog integriert
+
+* Main: LoadPlugin(): Automatisches Warten auf Ende des Ladevorgangs (Bug existierte überall außer im Firefox)
+* Main: Init(): Automatische Verzögerung der Initialisierung bei aktivem Ladevorgang
+* Main: Run(): Automatische Verzögerung des Starts bei aktivem Ladevorgang
+* Main: Run(): Startfunktion des "aufbauenden Skripts" muss in Run(NAME_DER_FUNKTION) angegeben werden, da sonst Probleme mit Ladevorgängen aufkommen können
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 183
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Main: LoadPlugin() hinzugefügt
++ Commands_0-6.doc angelegt und um aktuelle Befehler ergänzt
+
+* index.html im Hauptverzeichnis: Angepasst auf LoadPlugin()
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 182
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Testlauf Font-System
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 181
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Aufräumarbeiten im SVN
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 180
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Changelog wieder aufgenommen mit Beginn der Arbeiten an v0.6
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 179
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Release screenSports2d v0.5 am 22.12.2010
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 114
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ GameObjects: SpriteRemove() integriert in GameObject_Template
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 110
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
++ Renderer: SpriteRemove() integriert
++ Sprite_Template: Remove() als direkt ansteuerbare Funktion, ruft die SpriteRemove() im Grafik-Pfad auf und übergibt die eigene ID
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 108
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Callbacks: Behebung von Prüfungsfehlern in den Funktionen Delete(), SetCallbackState() und GetCallbackRate(), wodurch diese unbrauchbar wurden
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 104
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+* GameObjects: Behebung eines Problems der Move()-Funktion
+
+* Renderer: Korrektur der DrawScene()-Funktion
+* Renderer: Korrektur der Clear()-Funktion
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+rev 101
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Ich führe den Log mal ab hier weiter, hab den immer übersehen *hust*
+
+# Neucoding der Engine (Gründe: Performance, Bugs, mehrfaches "Zerpflügen" des Codes)
+# Änderung der Versionierung
+
+# Sollte jemand Fragen zu den Objekten haben, einfach an mich wenden (Dennis aka Skarge)
++ Funktion: Einbau der GameObjects, die ab sofort für Berechnungen von Position usw. genutzt werden und als eigentliche Spielobjekte dienen
++ GameObjects: Erstellung eines "Templates", aus dem sich alle Objects mit Grundeigenschaften und -methoden ableiten (GameObject_Template)
++ GameObjects: Bei Erstellung eines neuen Objekts gibt dieses eine Referenz auf sich selbst ab mittels return, erleichtert das Ansprechen deutlich (ebenso  
+  die Performance :D)
+
+* Sprites: Sprites sind "nur noch" Sprites im eigentlichen Sinne, die bisherige Nutzung für allerlei Unsinn (als Spielobjekt quasi) ist vorbei
++ Sprites: Kopplung an GameObjects möglich (sogar erwünscht), wodurch das Sprite direkt auf die entsprechende Position gelegt werden kann
+
+* Renderer: Aufräumen der DrawScene() (vorher RenderScene()), Unterscheidung zwischen Sprites mit und ohne GameObject-Anschluss
+
++ Funktion: Wiedereinbau des errorHandlers, ratet mal an der Aufgabe ;)
++ Plugin:   ss2dInput verfügbar (Erkennung von Tastendruck usw., wie in den alten Versionen)
+
++ Engine: Mehr Funktionen zur Anpassung der Engine während der Laufzeit (get- und set-Funktionen)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 0.4.0 (Build: ???)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Einführung von SVN
+# Ausklinkung der 0.4.0 zur Build 221, Weiterführung wenn in Branches. Neue Version startet bei rev250, Neucoding
+
+# Namensänderung in screenSports2D (ss2d)
+# Erste wirklich für Spiele denkbare Version
+
++ Animationen: Steuerung von Animationen (Play, Stop und StopAll) eingebaut
++ Engine: Renderer ab sofort als externes PlugIn
++ Engine: Zeichnen mittels Canvas als neue Zeichenmethode eingebaut, alte Methode auch als Fallback verworfen
++ Engine: Diverse Zeichenfunktionen integriert (DrawDot, DrawRect...)
++ Sprite: Positionsabfrage eines Sprites mittels GetPosition
++ Sprite: Setzen der Position eines Sprites mittels SetPosition
++ Funktion: Audiodateien dank Soundwrapper direkt über Engine verwaltbar
++ Soundwrapper: HTML5-Wrapper als externes PlugIn
++ Soundwrapper: Unterstützung gleichzeitiger Wiedergabe von Hintergrundmusik und anderen Sounds
+
+* Behebung eines Bugs im Refresh, der nach wenigen Frames alle Animationen unterbunden hat
+* Engine-Initialisierung gebündelt anstatt in Stage()-Funktion und teilweise in anderen Funktionen
+* Anpassen der Fehlermeldungen
+* Aufräumen und Neustrukturierung des Codes
+* Neukonstruktion des Animationssystems zur Anpassung an Canvas
+* Quellcode unkodiert, Lizenz beigefügt
+
+# Änderungen beim Canvas-Renderer ab nächster Version separat
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Version 0.3.0 (Build: 125)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Beginn des Changelogs
+
++ Funktionen: Erkennung von Tastatureingaben
++ Funktionen: Kollisionserkennung anhand von Bounding Boxes (definiert mittels Sprite-Größe)
++ Funktionen: Preloader für Grafiken
++ Preloader: Möglichkeit, einen Ladebalken anzuzeigen
++ Sprite: Rotation möglich
++ Sprite: Transparenz einstellbar
++ Stage: Parallax-Background definierbar
++ Stage: Einbau der Javascript-Engine Erkennung (Gecko, Webkit...)
+
+* Refresh: Entkopplung der Tastatureingaben vom Game-Status
+* Stage: Großschreibung des Namens wegen Einheitsbezeichnungen
+
+# Weitere Änderungen möglich, hab evtl. vergessen aufzuführen ;)

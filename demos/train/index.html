@@ -1,0 +1,82 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+
+<head>
+ <title>.:: Train-Demo :: powered by ss2d v0.5 ::.</title>
+
+ <script type="text/javascript" src="../../inc/jquery.min.js">
+ </script>
+
+</head>
+
+<body>
+
+
+
+<div id="stage">
+</div><br />
+<input type="button" value="Toggle 3D" onclick="ss2d.Toggle3d();" style="cursor:pointer;" />
+<br /><br /><span style="font-weight:bold;">Performance:</span><br /><div id="stats"></div>
+
+<script type="text/javascript" src="../../ss2d/ss2dMain.js">
+</script>
+
+<script type="text/javascript">
+ss2d.SetMaxFrameskip(50);
+ss2d.LoadPlugin("../../ss2d/ss2dRendererCanvas.js", "cRendererPlugin");
+ss2d.Init(false);
+ss2d.Run("Start");
+
+function Start() {
+ss2d.Graphics.SetScreen(480,360);
+ss2d.SetTicksPerSecond(25);
+
+var background = ss2d.NewGameObject("background");
+background.width = 600;
+background.height = 273;
+background.SetPosition(-100,0);
+background.LoadSprite("gfx/mountains.jpg");
+background.layer = 6;
+background.rate = 25;
+
+var grass = ss2d.NewGameObject("grass");
+grass.width=1024;
+grass.height=328;
+grass.SetPosition(-500,150);
+grass.LoadSprite("gfx/grass.png");
+grass.layer = 4;
+grass.rate=2;
+
+var tree = ss2d.NewGameObject("tree");
+tree.width   = 196;
+tree.height  = 300;
+tree.rate    = 1;
+tree.SetPosition(-200,0);
+tree.layer   = 2;
+tree.LoadSprite("gfx/tree.png");
+
+var train = ss2d.NewGameObject("train");
+train.width  = 480;
+train.height = 360;
+train.layer  = 0;
+train.LoadSprite("gfx/train.png");
+
+background.Move(1,0,true);
+grass.Move(1,0);
+tree.Move(7,0,true);
+
+
+ss2d.Callback.Register("treeReset", function () {
+	var pos = tree.GetPosition();
+	if (pos.x>=530){
+		tree.SetPosition(-200,0);
+	}
+},15,1);
+}
+</script>
+</body>
+
+</html>

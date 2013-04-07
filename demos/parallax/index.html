@@ -1,0 +1,63 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+
+<head>
+ <title>.:: Panorama &amp; Resize-Demo :: powered by ss2d v1.0 (0.5.20101017.360) ::.</title>
+
+ <script type="text/javascript" src="../../inc/jquery.min.js">
+ </script>
+
+</head>
+
+<style>
+* {
+	font-family: Arial,Tahoma,Verdana;
+	font-size: 12px;
+	color: #000;
+}
+</style>
+
+<body>
+    
+<div id="stage">
+</div>
+<br />Switch Panorama: <input type="button" value="Morning" onclick="SetPanorama('Morning1');" />&nbsp;<input type="button" value="Dawn" onclick="SetPanorama('Dawn1');" />&nbsp;<input type="button" value="Evening" onclick="SetPanorama('Evening1');" />&nbsp;<input type="button" value="Night" onclick="SetPanorama('Night1');" />&nbsp;
+<br /><br /><div id="pos"></div><br /><span style="font-weight:bold;">Performance:</span><br /><div id="stats"></div>
+
+<script type="text/javascript" src="../../ss2d/ss2dMain.js">
+</script>
+
+<script type="text/javascript">
+ss2d.SetMaxFrameskip(50);
+ss2d.SetTicksPerSecond(26);
+ss2d.LoadPlugin("../../ss2d/ss2dRendererCanvas.js", "cRendererPlugin");
+ss2d.LoadPlugin("../../ss2d/ss2dInput.js", "cInputPlugin");
+ss2d.Init(false);
+ss2d.Run("StartDemo");
+
+function SetPanorama (src) {
+	ss2d.Graphics.SetPanorama(src + ".png", 640, 480);
+}
+
+function StartDemo () {
+	ss2d.Graphics.SetScreen(640,480);
+	ss2d.Graphics.SetPanorama("Morning1.png", 640, 480);
+	ss2d.Graphics.MovePanorama(1,0);
+
+	var ballon = ss2d.NewGameObject("ballon");
+	ballon.width  = 21;
+	ballon.height = 30;
+	ballon.SetPosition(1050,200);
+	ballon.LoadSprite("balloon.png");
+	ballon.rate = 1;
+	ballon.layer = 1;
+	ballon.Move(-1,0);
+}
+</script>
+
+</body>
+
+</html>

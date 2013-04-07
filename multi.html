@@ -1,0 +1,38 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de">
+
+<head>
+ <title>.:: ss2d 1.0 (550) ::.</title>
+
+ <script type="text/javascript" src="inc/gserializer.js">
+ </script>
+ <script type="text/javascript" src="inc/jquery.min.js">
+ </script>
+
+</head>
+
+<body>
+<div id="stage">
+
+</div><br />
+<div id="stats"></div><br />
+
+<script type="text/javascript" src="ss2d/ss2dMain.js">
+</script>
+
+<script type="text/javascript">
+ss2d.LoadPlugin("ss2d/ss2dRendererCanvas.js", "cRendererPlugin");
+ss2d.LoadPlugin("ss2d/ss2dWebSocket.js", "cWebSocketPlugin");
+
+ss2d.Init(false);
+ss2d.Run("Start");
+
+function Start() {
+}
+</script>
+</body>
+
+</html>

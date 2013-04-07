@@ -1,0 +1,56 @@
+=============================================================================================================================================================
+screenSports2D Tile-Engine :: Aufbau des Mapformats (Stand: 11.01.2011)
+=============================================================================================================================================================
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Übersicht
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Diese Datei beschreibt den Aufbau des Mapformats, das von der ss2d Tile-Engine genutzt wird.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Aufbau
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Maps sind als Objekt aufgebaut, wobei jedes Objekt 2 Eigenschaften besitzt: header und data. header ist hierbei ein weiteres Objekt, das Informationen zur jeweiligen Map enthält. Die Informationen sind allesamt als String oder Int hinterlegt, lediglich tilesetPass ist ein Array, in dem hinterlegt ist, welches Feld des Tilesets passierbar ist und welches nicht. Hierbei werden die Tiles des Sets von links nach rechts und oben nach unten gezählt, wobei ein Tile ein gleich großes Feld der in tileSize angegebenen Größe darstellt (z.B. 16x16, 53x53 o.a.).
+
+Unter data ist in Form eines mehrdimensionalen Arrays [y-Koordinate][x-Koordinate][layer] die pro Feld im entsprechenden Layer verwendete Tile-ID gespeichert. Die Y-Koordinate muss stehts der Index des ersten Arrays sein, die X-Koordinate immer der Index des zweiten Arrays, da die Maps von links nach rechts und von oben nach unten dargestellt werden.
+
+
+Im Folgenden ist der Gesamtaufbau zu sehen:
+
+header {
+	mapname,
+	author,
+	engine,
+	editor,
+	createdate,
+	lastchange,
+	
+	mapWidth,
+	mapHeight,
+	mapLayers,
+	
+	tileset,
+	tileSize,
+	tilesetPass [id] {
+		field,
+		passable
+	}
+	
+	parallaxSrc,
+	parallaxMoveX,
+	parralaxMoveY
+	
+	bgmSrc,
+	bgmVolume
+},
+
+data [y][x][layer]
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Events, Texte usw.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+NPCs, Texte und alles, was sonst noch mit Dynamik und Interaktivität auf den Maps zusammen hängt, wird separat gespeichert. Somit bestehen alle Maps aus min. 2 Dateien (1 mit der reinen Map, 1 mit Events usw.). Diese separate Datei wird in einer anderen Übersicht erklärt und ist nicht Teil dieser Informationssammlung.
+
