@@ -7,7 +7,7 @@
  * //// @Copyright: screenSports.de                               ////
  * //// @Link:      http://www.screensports.de                    ////
  * //// ********************************************************* ////
- * //// @Release:   2010/10/31                                    ////
+ * //// @Release:   2013/04/08                                    ////
  * //// ********************************************************* ////
  * //// @Summary:                                                 ////
  * //// Klasse fuer Map und Tilesystem                            ////
@@ -32,7 +32,7 @@ function cMapPlugin () {
 	////////////////////////////////////////////////////////////////////////////////////////
 
         useTiles:   true,
-        mapData:    null,
+        mapData:    [],
         resData:    [],
         tileData:   [],
         tileSize:   32,
@@ -94,6 +94,11 @@ function cMapPlugin () {
          */
         CheckPassable: function (x,y) {
             return true;
-        }
+        },
+		
+		
+		
+		LoadTiledMapJSON: function (src) {
+		}
     }
 }

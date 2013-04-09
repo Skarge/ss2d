@@ -109,7 +109,7 @@ function cRendererPlugin ()  {
 			this.drawCage.appendChild(objCvFont);
 
             //// Erzeugung des Elements fuer die spaetere Anzeige und Einbindung in die Stage
-            if ($.browser.msie) {
+            if (typeof $.browser != "undefined" && $.browser.msie) {
                 G_vmlCanvasManager.initElement(objCvBg);
                 G_vmlCanvasManager.initElement(objCv);
                 G_vmlCanvasManager.initElement(objCvFont);
@@ -493,9 +493,9 @@ function cRendererPlugin ()  {
 						for (var x = 0; x < ss2d.Map.mapData.header.width; x++) {
 
 							for (var l = 0; l < ss2d.Map.mapData.header.layers; l++) {
-								if (typeof ss2d.Map.mapData.data[y][x][l] != "undefined" && ss2d.Map.mapData.data[y][x][l].resId != "" && ss2d.Map.mapData.data[y][x][l].resId > 0)
-									if (typeof ss2d.Map.resData[ss2d.Map.mapData.data[y][x][l].resId].tileId != "undefined") {
-										var resData = ss2d.Map.resData[ss2d.Map.mapData.data[y][x][l].resId];
+								if (typeof ss2d.Map.mapData.data[l][y][x] != "undefined" && ss2d.Map.mapData.data[l][y][x].resId != "" && ss2d.Map.mapData.data[l][y][x].resId > 0)
+									if (typeof ss2d.Map.resData[ss2d.Map.mapData.data[l][y][x].resId].tileId != "undefined") {
+										var resData = ss2d.Map.resData[ss2d.Map.mapData.data[l][y][x].resId];
 										this.canvasCtx[0].drawImage(ss2d.Map.tileData[resData.tileId].tileset, resData.x, resData.y, resData.size, resData.size, x * ss2d.Map.tileSize, y * ss2d.Map.tileSize, ss2d.Map.tileSize, ss2d.Map.tileSize);
 									}
 									else {

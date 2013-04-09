@@ -26,6 +26,7 @@ function Bench () {
 		objNew.LoadSprite("gfx/cube_" + Random(4) + ".png");
 		rects.push(objNew);
 		rectCount++;
+		$("#rectCount").html("Objekte: " + rectCount);
 	}
 	
 	

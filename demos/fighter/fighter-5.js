@@ -7,7 +7,7 @@
  * //// @Copyright: screenSports.de                               ////
  * //// @Link:      http://www.screensports.de                    ////
  * //// ********************************************************* ////
- * //// @Release:   2010/12/17                                    ////
+ * //// @Release:   2013/04/07                                    ////
  * //// ********************************************************* ////
  * ///////////////////////////////////////////////////////////////////
  */
@@ -165,16 +165,16 @@ function ss2dFighter () {
             imageURL: 	"sprites/enemy1-punch.png"
         });
 
-/*
+
         //// Soundwrapper initialisieren und Sounds laden
-        ss2d.ss2dSound.Init();
-        ss2d.ss2dSound.Load("bgm/stage.ogg", "bgm", "stage");
-        ss2d.ss2dSound.Load("bgm/opening.ogg", "bgm", "title");
-        ss2d.ss2dSound.Load("Chicken.wav", "sound", "test");
+        ss2d.Sound.Init();
+        ss2d.Sound.Load("bgm/stage.ogg", "bgm", "stage");
+        ss2d.Sound.Load("bgm/opening.ogg", "bgm", "title");
+        ss2d.Sound.Load("Chicken.wav", "sound", "test");
 
         //// Menue einblenden und BGM abspielen
-        ss2d.ss2dSound.Play("bgm", "title", true);
-*/
+        ss2d.Sound.Play("bgm", "title", true);
+
         var menu = "<div id=\"menu_links\" style=\"position:absolute; top:270px; left:470px; text-align:center; z-index:999;\">";
            menu += " <a href=\"javascript:Fighter.StartGame();\" style=\"color:#ffffff\">Spiel starten</a><br />";
            menu += " <a href=\"javascript:Fighter.ShowKeys();\" style=\"color:#ffffff\">Steuerung / Hilfe</a><br />";
@@ -219,7 +219,7 @@ function ss2dFighter () {
 
         $("#title").empty().remove();
 
-        //ss2d.ss2dSound.Play("bgm", "stage", true);
+        ss2d.Sound.Play("bgm", "stage", true);
 
         GuiDrawHP("player");
         GuiDrawHP("enemy");

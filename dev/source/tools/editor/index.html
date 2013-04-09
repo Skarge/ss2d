@@ -1,17 +1,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Editor</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Editor</title>
+	<script type="text/javascript" src="../../inc/jquery.min.js"></script>
+	<script type="text/javascript" src="js/editor.js"></script>
+	<link rel="stylesheet" media="screen" href="style.css" />
 </head>
 
-<script type="text/javascript" src="../../inc/jquery.min.js"></script>
 
 <body>
-<div id="stage"></div>
 
-<script type="text/javascript" src="../../ss2d/ss2dMain.js"></script>
-<script type="text/javascript" src="js/editor.js"></script>
+<div id="outer">
+	<div id="head">ss2Ed</div>
+	<div id="menu">
+    	<ul id="menu-tabs">
+        	<li class="menu-item-active">Home</li>
+        	<li class="menu-item">Item</li>
+        	<li class="menu-item">Item</li>
+        </ul>
+    </div>
+	<div id="subMenu"></div>
+    <div id="mapArea">
+    	<div id="map"></div>
+        <div id="project"></div>
+    </div>
+    <div id="scene"></div>
+</div>
 
 </body>
 </html>
