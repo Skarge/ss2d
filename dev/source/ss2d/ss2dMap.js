@@ -71,16 +71,16 @@ function cMapPlugin () {
 
             for (var i = 0, x = 0, y = 0; i < (a*b); i++, x++) {
 
-                if (x >= a) {
-                    x = 0;
-                    y++;
-                }
-
                 this.resData[this.resData.length] = {
                     tileId: this.tileData.length - 1,
                     x  : ((x - 1) * size) + x,
                     y  : (y * size) + y + 1,
                     size: size
+                }
+
+                if (x >= a) {
+                    x = 0;
+                    y++;
                 }
             }
         },

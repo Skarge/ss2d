@@ -1,8 +1,8 @@
 function ss2Ed () {
 	
 	var _version 	= "0.1dev";
-	var _build		= "2013040801";
-	var _release	= "2013-04-08";
+	var _build		= "2013040901";
+	var _release	= "2013-04-09";
 	
 	var _currProj	= "";
 	var _currMap	= null;
@@ -36,17 +36,41 @@ function ss2Ed () {
 	
 	
 	/* /////////////////////////////////////////////////////////////////////////
-     * @Func:   MapDisplayEditor ()
+     * @Func:   MapShowEditor ()
      * @Author: Skarge
      * @Date:   2013/04/09
      * @Mod.:   -
      * @Desc:   Zeigt die zuletzt geladene Karte an
      */
-	this.MapDisplayEditor = function () {
-		
-		if (_mapEdMap.length > 1) {
-			
+	this.MapShowEditor = function () {
+		if (_mapEdMap.length >= 1) {
+			var output = "";
+			for (var layer in _mapEdMap) {
+				output += "<div id=\"layer_" + layer + "\" style=\"z-index:" + layer + "; position: absolute; top:0px; left:0px;\">";
+				for (var i = 0, x = 0, y = 0; i < _mapEdMap[layer].tileCount; i++) {
+					if (typeof _mapEdMap[layer].data[x] != "undefined" && typeof _mapEdMap[layer].data[x][y] != "undefined") {
+						if (_mapEdMap[layer].data[x][y] != 0)
+							backgroundImageTmp = "background:url('" + _mapTileData[_mapResData[_mapEdMap[layer].data[x][y]].tileId].tileset.src + "'); background-position:-" + _mapResData[_mapEdMap[layer].data[x][y]].x + "px -" + _mapResData[_mapEdMap[layer].data[x][y]].y + "px;";
+						else
+							backgroundImageTmp = "";
+						
+						output += "<div id=\"" + layer + "_" + x + "_" + y + "\" style=\"width:32px; height:32px; " + backgroundImageTmp + " float:left;\"></div>";
+					}
+					
+					if (x == (_mapEdMap[layer].width - 1)) {
+						x = 0;
+						y++;
+						output += "<div style=\"clear:both;\"></div>";
+					}
+					else
+						x++;
+				}
+			}
+			output += "</div>";
 		}
+		
+		$("#map").html(output);
+		
 	}
 	
 	
@@ -66,12 +90,11 @@ function ss2Ed () {
 			
 			//// Ajax auf async = false einstellen, da wir das Ergebnis unbedingt benoetigen bevor es weiter geht
 			$.ajaxSetup({
-				async: false,
-				cache: false
+				async: false
 			});
 			
 			//// JSON abrufen und ins Map-Object packen
-			$.getJSON("maps/market1.json", function(data) {
+			$.getJSON(src, function(data) {
 				map = jQuery.extend(map, data);
 			});
 			
@@ -80,18 +103,26 @@ function ss2Ed () {
 				async: true
 			});
 			
-			
 			//// Die erhaltenen Kartendaten werden jetzt der Reihe nach auseinander genommen und in die Eigenschaften des Editors gepackt
 			for (var tSet in map.tilesets) {
 				this.MapLoadTileset(map.tilesets[tSet].image, 16, 16, 32);
 			}
 			
-			
 			for (var layer in map.layers) {
 				if (map.layers[layer].opacity == 1) {
-					for (var i = 0, x = 0, y = 0; i < map.layers[layer].length; i++, x++) {
-						_mapEdMap[currLayer][x][y] = map.layers[layer][i];
-						if (x >= map.width) {
+					_mapEdMap[currLayer] 		= {
+						data: 		[],
+						tileCount:	map.layers[layer].data.length,
+						width:		map.layers[layer].width,
+						height:		map.layers[layer].height
+					};
+					for (var i = 0, x = 0, y = 0; i < map.layers[layer].data.length; i++) {
+						if (typeof _mapEdMap[currLayer].data[x] == "undefined")
+							_mapEdMap[currLayer].data[x] = [];
+						
+						_mapEdMap[currLayer].data[x][y] = map.layers[layer].data[i];
+						
+						if (x == (map.width - 1)) {
 							y++;
 							x = 0;
 						}
@@ -100,6 +131,7 @@ function ss2Ed () {
 						}
 					}
 				}
+				currLayer++;
 			}
 		}
 	}
@@ -125,16 +157,16 @@ function ss2Ed () {
 		
 		for (var i = 0, x = 0, y = 0; i < (a*b); i++, x++) {
 
+			_mapResData[_mapResData.length] = {
+				tileId: _mapTileData.length - 1,
+				x  : ((x - 1) * size),
+				y  : (y * size),
+				size: size
+			}
+			
 			if (x >= a) {
 				x = 0;
 				y++;
-			}
-
-			_mapResData[_mapResData.length] = {
-				tileId: _mapTileData.length - 1,
-				x  : ((x - 1) * size) + x,
-				y  : (y * size) + y + 1,
-				size: size
 			}
 		}
 	}
@@ -143,5 +175,5 @@ function ss2Ed () {
 
 var ss2Ed = new ss2Ed();
 ss2Ed.Init();
-ss2Ed.MapLoadTiledJSON("market1.json");
-ss2Ed.MapDisplayEditor();
+ss2Ed.MapLoadTiledJSON("maps/market1.json");
+ss2Ed.MapShowEditor();

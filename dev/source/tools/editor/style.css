@@ -63,6 +63,11 @@ div#mapArea {
 }
 
 
+div#map {
+	position: relative;
+}
+
+
 div#mapArea div#map {
 	
 }
